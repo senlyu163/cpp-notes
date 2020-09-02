@@ -7,5 +7,8 @@
 
 int main () {
     print(7.5, "hello", std::bitset<16>(377), 42);
+
+    tuple<int, float, std::string> t(41, 6.3, "nico");
+
     return 0;
 }
