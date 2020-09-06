@@ -1,0 +1,7 @@
+/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/sen/Workspaces/github/cpp-notes
+-- [INFO] Recurse all src files
+variadic_template
+-- into foreach
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/sen/Workspaces/github/cpp-notes/cmake-build-debug

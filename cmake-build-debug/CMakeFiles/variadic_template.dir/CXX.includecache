@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sen/Workspaces/github/cpp-notes/cpp11-new_features/variadic_template/variadic_template.cpp
+variadic_template.h
+/home/sen/Workspaces/github/cpp-notes/cpp11-new_features/variadic_template/variadic_template.h
+
+/home/sen/Workspaces/github/cpp-notes/cpp11-new_features/variadic_template/variadic_template.h
+iostream
+-
+bitset
+-
+string
+-
+

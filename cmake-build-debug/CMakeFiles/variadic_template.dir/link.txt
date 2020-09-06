@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/variadic_template.dir/cpp11-new_features/variadic_template/variadic_template.cpp.o -o variadic_template 
