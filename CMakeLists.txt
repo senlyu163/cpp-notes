@@ -14,6 +14,8 @@ FILE(GLOB_RECURSE NEW_FEATURES ${PROJECT_SOURCE_DIR}/cpp11-new_features/test/*.c
 include_directories(${SOLUTION_DIR}/cpp11-new_features/src)
 FILE(GLOB_RECURSE NEW_FEATURES ${PROJECT_SOURCE_DIR}/cpp-concurrency/test/*.cpp)
 include_directories(${SOLUTION_DIR}/cpp-concurrency/src)
+FILE(GLOB_RECURSE NEW_FEATURES ${PROJECT_SOURCE_DIR}/utils/test/*.cpp)
+#include_directories(${SOLUTION_DIR}/utils/src)
 
 find_package(Threads REQUIRED)
 
