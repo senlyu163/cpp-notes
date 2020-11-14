@@ -9,9 +9,10 @@ set(SOLUTION_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 #---------------------------------------------------------#
 # =================== Options start ===================== #
 #---------------------------------------------------------#
-option(BUILD_NEW_FEATURES "[Optional] Build cpp11-new_features" ON)
+option(BUILD_NEW_FEATURES "[Optional] Build cpp11-new_features" OFF)
 option(BUILD_CONCURRENCY "[Optional] Build cpp-concurrency" ON)
-option(BUILD_UTILS "[Optional] Build utils" ON)
+option(BUILD_MEM_MANAGEMENT "[Optional] Build mem-management" ON)
+option(BUILD_UTILS "[Optional] Build utils" OFF)
 #---------------------------------------------------------#
 # =================== Options end  ====================== #
 #---------------------------------------------------------#
@@ -32,6 +33,15 @@ if (BUILD_CONCURRENCY)
     target_link_libraries(${file} Threads::Threads)  # to link pthread
 else()
     message(STATUS "[Optional] Build cpp-concurrency: [OFF]")
+endif ()
+
+if (BUILD_MEM_MANAGEMENT)
+    FILE(GLOB_RECURSE MEM_MANAGEMENT ${PROJECT_SOURCE_DIR}/mem-management/test/*.cpp)
+#    include_directories(${SOLUTION_DIR}/mem-management/src/*)
+#    include_directories(${SOLUTION_DIR}/mem-management/src/*.cpp)
+    aux_source_directory(${SOLUTION_DIR}/mem-management/src MEM_SRC)
+else()
+    message(STATUS "[Optional] Build mem-management: [OFF]")
 endif ()
 
 if (BUILD_UTILS)
@@ -63,8 +73,18 @@ else()
     message(STATUS "[Optional] Build cpp-concurrency: [OFF]")
 endif ()
 
+if (BUILD_MEM_MANAGEMENT)
+    foreach(path ${MEM_MANAGEMENT})
+        string(REGEX MATCH "[^/]*.[(c)|(cc)|(cpp)]$" file_ext ${path})
+        string(REGEX MATCH "^[^.]*" file ${file_ext})
+        add_executable(test_${file} ${path} ${MEM_SRC})
+    endforeach()
+else()
+    message(STATUS "[Optional] Build mem-management: [OFF]")
+endif ()
+
 if (BUILD_UTILS)
-    foreach(path ${CONCURRENCY})
+    foreach(path ${UTILS})
         string(REGEX MATCH "[^/]*.[(c)|(cc)|(cpp)]$" file_ext ${path})
         string(REGEX MATCH "^[^.]*" file ${file_ext})
         add_executable(test_${file} ${path})
